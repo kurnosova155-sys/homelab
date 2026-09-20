@@ -1,8 +1,6 @@
 # Журнал
 
-## 2026-09-20
-
-### Что сделала
+### Что сделано
 - Установила VirtualBox + Extension Pack
 - Развернула Ubuntu Server 24.04 LTS (2 ГБ RAM, 25 ГБ диск)
 - Логин: admin1, хост: admin
