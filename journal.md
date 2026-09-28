@@ -43,3 +43,30 @@
 - kali — 192.168.56.105
 
 Пинги между ВМ работают, SSH с хоста работает, интернет через NAT есть.
+
+
+## Неделя 1 (23.09 – 30.09) — пройдена
+
+### Что сделала
+- Прошла теорию: OSI (7 уровней), TCP/IP (4 уровня), инкапсуляция.
+- Разобрала ARP — как узнаётся MAC по IP.
+- Разобрала TCP-handshake (SYN, SYN-ACK, ACK) и UDP.
+- Освоила утилиты: ping, traceroute, nslookup, dig, host, ss, ip neigh, netstat.
+- Увидела TCP-handshake и HTTP-трафик в Wireshark.
+- Включила promiscuous mode на Kali — теперь вижу чужой трафик.
+
+### Что сломалось
+- Буфер обмена в окне Ubuntu — Guest Additions не работает.
+  Решение: работаю через SSH с хоста.
+- Wireshark не видел SSH с хоста — VirtualBox не транслирует трафик хост↔ВМ другим ВМ.
+  Решение: promiscuous mode ИЛИ запросы с Kali.
+- Oшибка лицензии при установке Windows Server — Unattended Install от VirtualBox.
+  Решение: удалила пустой Unattended-ISO, поставила вручную.
+
+### Артефакты
+- 01-networking/week1-osi-tcpip/README.md — конспект теории.
+- 01-networking/week1-osi-tcpip/cli-output.md — вывод команд.
+- network.png — схема сети.
+
+### Что дальше
+- Неделя 2: IP-адресация и субнетинг.
