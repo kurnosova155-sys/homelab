@@ -254,7 +254,6 @@ Ethernet 2       Intel(R) PRO/1000   08-00-27-E6-CA-9D    \Device\Tcpip_...
 - Поля SHA/SPA/THA/TPA — это MAC/IP отправителя и получателя.
 - В запросе THA всегда пустой (00:00:00:00:00:00).
 
-Скриншот Wireshark: [добавить]
 
 ## Wireshark — TCP handshake (SSH)
 
@@ -293,7 +292,6 @@ Ethernet 2       Intel(R) PRO/1000   08-00-27-E6-CA-9D    \Device\Tcpip_...
 - TCP — порты, флаги (L4)
 - SSH — данные (L7)
 
-Скриншот: [![alt text](image.png)]
 
 
 ## Wireshark — HTTP
@@ -314,7 +312,6 @@ Ethernet 2       Intel(R) PRO/1000   08-00-27-E6-CA-9D    \Device\Tcpip_...
 
 User-Agent для curl: "curl/8.x.x"
 
-Скриншот: [![alt text](image-1.png)]
 
 
 
