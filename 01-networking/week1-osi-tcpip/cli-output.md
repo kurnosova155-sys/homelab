@@ -230,7 +230,7 @@ Ethernet 2       Intel(R) PRO/1000   08-00-27-E6-CA-9D    \Device\Tcpip_...
 
 ## Wireshark — ARP
 
-Фильтр в Wireshark: arp
+Фильтр: arp
 
 ### ARP Request (от Ubuntu 192.168.56.102)
 
@@ -247,13 +247,14 @@ Ethernet 2       Intel(R) PRO/1000   08-00-27-E6-CA-9D    \Device\Tcpip_...
 - THA = 08:00:27:99:76:7d (MAC Ubuntu)
 - TPA = 192.168.56.102 (IP Ubuntu)
 
-### Что понял
+### Что поняла
 
 - ARP-запрос идёт всем (broadcast), потому что MAC неизвестен.
 - ARP-ответ идёт лично (unicast), потому что MAC уже известен.
 - Поля SHA/SPA/THA/TPA — это MAC/IP отправителя и получателя.
 - В запросе THA всегда пустой (00:00:00:00:00:00).
 
+---
 
 ## Wireshark — TCP handshake (SSH)
 
@@ -261,30 +262,29 @@ Ethernet 2       Intel(R) PRO/1000   08-00-27-E6-CA-9D    \Device\Tcpip_...
 
 Фильтр: tcp.port == 22
 
-Трёхстороннее рукопожатие:
+### Пакет 3 — SYN
 
-Пакет 3 — SYN:
 - Source: 192.168.56.105 (Kali)
 - Destination: 192.168.56.102 (Ubuntu)
 - Порт источника: 35174 (случайный)
 - Порт назначения: 22 (SSH)
 - Флаг: [SYN] — «Хочу соединиться»
 
-Пакет 4 — SYN, ACK:
+### Пакет 4 — SYN, ACK
+
 - Source: 192.168.56.102 (Ubuntu)
 - Destination: 192.168.56.105 (Kali)
 - Порт источника: 22
 - Порт назначения: 35174
 - Флаг: [SYN, ACK] — «ОК, я готов»
 
-Пакет 5 — ACK:
+### Пакет 5 — ACK
+
 - Source: 192.168.56.105 (Kali)
 - Destination: 192.168.56.102 (Ubuntu)
 - Флаг: [ACK] — «Принято, начинаем»
 
-После этого начинается передача данных:
-- SSHv2 (Encrypted packet) — зашифрованный трафик.
-- Protocol: SSHv2 — это уже прикладной уровень.
+После этого начинается передача данных — SSHv2 (Encrypted packet).
 
 Уровни OSI в разборе одного пакета:
 - Ethernet II — MAC-адреса (L2)
@@ -292,7 +292,7 @@ Ethernet 2       Intel(R) PRO/1000   08-00-27-E6-CA-9D    \Device\Tcpip_...
 - TCP — порты, флаги (L4)
 - SSH — данные (L7)
 
-
+---
 
 ## Wireshark — HTTP
 
@@ -300,11 +300,13 @@ Ethernet 2       Intel(R) PRO/1000   08-00-27-E6-CA-9D    \Device\Tcpip_...
 
 Фильтр: http
 
-Пакеты:
+### Пакеты
+
 1. GET / HTTP/1.1 — запрос от Kali к Ubuntu.
 2. HTTP/1.1 200 OK — ответ сервера.
 
-Разбор GET-запроса:
+### Разбор GET-запроса
+
 - Ethernet II — MAC-адреса (L2)
 - IPv4 — Kali → Ubuntu (192.168.56.105 → 192.168.56.102) (L3)
 - TCP — порт назначения 80 (L4)
@@ -312,8 +314,7 @@ Ethernet 2       Intel(R) PRO/1000   08-00-27-E6-CA-9D    \Device\Tcpip_...
 
 User-Agent для curl: "curl/8.x.x"
 
-
-
+---
 
 ## Проверка promiscuous mode
 
@@ -322,6 +323,6 @@ User-Agent для curl: "curl/8.x.x"
 Проверка:
 1. Kali — захват на eth1.
 2. С хоста — SSH на Ubuntu.
-3. Смотрю в Wireshark — вижу .
+3. Смотрю в Wireshark — вижу SSH-пакеты.
 
-Вывод: работает 
+Вывод: работает.
