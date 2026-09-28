@@ -58,9 +58,10 @@
 ### Что сломалось
 - Буфер обмена в окне Ubuntu — Guest Additions не работает.
   Решение: работаю через SSH с хоста.
-- Wireshark не видел SSH с хоста — VirtualBox не транслирует трафик хост↔ВМ другим ВМ.
+- Wireshark не видел SSH с хоста — VirtualBox не транслирует трафик
+  хост↔ВМ другим ВМ.
   Решение: promiscuous mode ИЛИ запросы с Kali.
-- Oшибка лицензии при установке Windows Server — Unattended Install от VirtualBox.
+- Ошибка лицензии при установке Windows Server — Unattended Install от VirtualBox.
   Решение: удалила пустой Unattended-ISO, поставила вручную.
 
 ### Артефакты
