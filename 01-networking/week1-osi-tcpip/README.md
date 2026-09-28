@@ -12,21 +12,17 @@ OSI — теоретическая модель, которая описывае
 - Модульность — можно заменить один уровень, остальные не трогаются.
 - Обучение — проще понимать по частям.
 
-7 уровней (снизу вверх):
+7 уровней 
 
-**1.** Physical (Физический) — кабель, Wi-Fi
-
-**2.** Data Link (Канальный) — Ethernet, MAC, ARP
-
-**3.** Network (Сетевой) — IP, ICMP
-
-**4.** Transport (Транспортный) — TCP, UDP
-
-**5.** Session (Сеансовый) — управление сессиями
-
-**6.** Presentation (Представления) — формат данных, шифрование
-
-**7.** Application (Приложения) — HTTP, DNS, SSH
+| № | Уровень | Что делает |
+|---|---|---|
+| 7 | Application | HTTP, DNS, SSH |
+| 6 | Presentation | формат данных, шифрование |
+| 5 | Session | управление сессиями |
+| 4 | Transport | TCP, UDP |
+| 3 | Network | IP, ICMP |
+| 2 | Data Link | Ethernet, MAC, ARP |
+| 1 | Physical | кабель, Wi-Fi |
 
 Мнемоника (снизу вверх): Please Do Not Throw Sausage Pizza Away
 
