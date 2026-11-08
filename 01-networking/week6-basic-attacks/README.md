@@ -59,6 +59,8 @@
 
 ### Защита (fail2ban)
 
+![fail2ban-banned].(fail2ban-banned.png)
+
 1. Установлен fail2ban на Ubuntu: `sudo apt install -y fail2ban`
 2. Настроен конфиг `/etc/fail2ban/jail.local`:
 
