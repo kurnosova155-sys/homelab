@@ -1,4 +1,4 @@
-# Неделя 5: VPN, TLS, Wireshark
+# Неделя 5: TLS, Wireshark
 
 ## 1. HTTPS и TLS
 
