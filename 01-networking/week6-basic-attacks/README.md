@@ -19,19 +19,16 @@
 - Трафик перехвачен в Wireshark (видны пакеты Echo Request от Win11).
 - *Примечание:* пакеты не пересылались дальше из-за ограничений VirtualBox NAT, но факт перехвата и подмены доказан.
 
-### Скриншоты
+Вот как это выглядело на практике:
 
-ARP-таблица Win11 с подменённым MAC:
+**1. Работающие процессы arpspoof (Kali):**
+![arpspoof terminal](arpspoof-terminal.png)
 
+**2. Подменённая ARP-таблица на Win11:**
 ![ARP table poisoned](arp-table-poisoned.png)
 
-Перехват ICMP-трафика в Wireshark:
-
+**3. Перехват трафика в Wireshark:**
 ![ARP spoofing Wireshark](arp-spoofing.png)
-
-Работающие процессы arpspoof:
-
-![arpspoof terminal](arpspoof-terminal.png)
 
 ---
 
@@ -55,7 +52,10 @@ ARP-таблица Win11 с подменённым MAC:
 
 ### Результат
 
-Пароль `12345` подобран успешно.
+Пароль `12345` подобран успешно. В логах Hydra видно:
+
+**Успешный подбор пароля:**
+![Hydra success](hydra-success.png)
 
 ### Защита (fail2ban)
 
