@@ -6,15 +6,11 @@
 
 ### Что было сделано
 
-1. Включила IP forwarding на Kali:
-   `sudo sysctl -w net.ipv4.ip_forward=1`
-
+1. Включила IP forwarding на Kali: `sudo sysctl -w net.ipv4.ip_forward=1`
 2. Запустила два процесса `arpspoof`:
    - Для Win11: сказала, что Kali — это Ubuntu (192.168.56.102).
    - Для Ubuntu: сказала, что Kali — это Win11 (192.168.56.110).
-
 3. Захватила ICMP-трафик в Wireshark на Kali.
-
 4. Проверила ARP-таблицу на Win11 — MAC-адрес Ubuntu подменился на MAC Kali (08:00:27:bc:6c:61).
 
 ### Результат
@@ -25,13 +21,16 @@
 
 ### Скриншоты
 
-1. ARP-таблица Win11 с подменённым MAC:
+ARP-таблица Win11 с подменённым MAC:
+
 ![ARP table poisoned](arp-table-poisoned.png)
 
-2. Перехват ICMP-трафика в Wireshark:
+Перехват ICMP-трафика в Wireshark:
+
 ![ARP spoofing Wireshark](arp-spoofing.png)
 
-3. Работающие процессы `arpspoof`:
+Работающие процессы arpspoof:
+
 ![arpspoof terminal](arpspoof-terminal.png)
 
 ---
@@ -50,24 +49,19 @@
 
 ### Что было сделано
 
-1. Создан тестовый пользователь на Ubuntu:
-   `sudo useradd -m -s /bin/bash testuser`
-   Пароль: `12345` (слабый, для теста).
+1. Создан тестовый пользователь на Ubuntu: `sudo useradd -m -s /bin/bash testuser`. Пароль: `12345` (слабый, для теста).
+2. Подготовлен словарь на Kali: `echo -e "password\n123456\n12345\nqwerty\nadmin\nletmein" > /tmp/passwords.txt`
+3. Запущен Brute-force с помощью Hydra: `hydra -l testuser -P /tmp/passwords.txt ssh://192.168.56.102`
 
-2. Подготовлен словарь на Kali:
-   `echo -e "password\n123456\n12345\nqwerty\nadmin\nletmein" > /tmp/passwords.txt`
+### Результат
 
-3. Запущен Brute-force с помощью Hydra:
-   `hydra -l testuser -P /tmp/passwords.txt ssh://192.168.56.102`
-
-4. **Результат:** пароль `12345` подобран успешно.
+Пароль `12345` подобран успешно.
 
 ### Защита (fail2ban)
 
-1. Установлен fail2ban на Ubuntu:
-`sudo apt install -y fail2ban`
-
+1. Установлен fail2ban на Ubuntu: `sudo apt install -y fail2ban`
 2. Настроен конфиг `/etc/fail2ban/jail.local`:
+
 ```ini
 [sshd]
 enabled = true
