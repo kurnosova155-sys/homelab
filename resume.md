@@ -2,7 +2,7 @@
 
 **Junior-специалист по информационной безопасности**
 
-Тверь / удалённо | al_du04@mail.ru | [телефон] | GitHub: https://github.com/kurnosova155-sys
+Тверь / удалённо | al_du04@mail.ru | GitHub: https://github.com/kurnosova155-sys
 
 ## О себе
 
