@@ -231,4 +231,3 @@ NAT через iptables:
 - Win11 резолвит lab.local и google.com.
 - Win11 пингует 8.8.8.8 через Ubuntu.
 
-Скриншоты: [приложить].
